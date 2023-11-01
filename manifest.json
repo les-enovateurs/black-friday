@@ -1,12 +1,9 @@
 {
-  "description": "Black Friday",
+  "description": "Back Friday",
   "manifest_version": 3,
   "name": "Black Friday",
   "version": "1.0",
   "homepage_url": "https://github.com/les-enovateurs/black-friday",
-  "background": {
-    "scripts": ["background.js"]
-  },
   "page_action": {
     "default_icon": {
       "16": "icons/unknown.jpg",
@@ -14,14 +11,17 @@
     },
     "default_title": ""
   },
-  "permissions": [
-    "activeTab",
-    "tabs"
-  ],
   "content_scripts": [
+    {
+      "matches": ["https://www.cdiscount.com/*"],
+      "js": ["cdiscount.js"]
+    },
     {
       "matches": ["*://*.amazon.fr/*"],
       "js": ["borderify.js"]
     }
+  ],
+  "permissions": [
+    "activeTab"
   ]
 }
