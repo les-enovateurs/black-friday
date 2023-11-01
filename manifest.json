@@ -1,10 +1,9 @@
 {
-  "description": "Back Friday",
+  "description": "Black Friday",
   "manifest_version": 3,
-  "name": "",
+  "name": "Black Friday",
   "version": "1.0",
   "homepage_url": "https://github.com/les-enovateurs/black-friday",
-
   "background": {
     "scripts": ["background.js"]
   },
@@ -19,4 +18,10 @@
     "activeTab",
     "tabs"
   ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazon.fr/*"],
+      "js": ["borderify.js"]
+    }
+  ]
 }
