@@ -1,18 +1,27 @@
 {
+  "description": "Back Friday",
+  "manifest_version": 3,
+  "name": "Black Friday",
+  "version": "1.0",
+  "homepage_url": "https://github.com/les-enovateurs/black-friday",
+  "page_action": {
+    "default_icon": {
+      "16": "icons/unknown.jpg",
+      "32": "icons/unknown.jpg"
+    },
+    "default_title": ""
+  },
   "content_scripts": [
     {
-      "matches": ["https://www.example.com/*"],
-      "js": [
-        "polyfill.js",
-        "file_com.js"
-      ]
+      "matches": ["https://www.cdiscount.com/*"],
+      "js": ["cdiscount.js"]
     },
     {
-      "matches": ["*://*.example.fr/*"],
-      "js": [
-        "polyfill.js",
-        "file_fr.js"
-      ]
+      "matches": ["*://*.amazon.fr/*"],
+      "js": ["amazon.js"]
     }
+  ],
+  "permissions": [
+    "activeTab"
   ]
 }
