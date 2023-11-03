@@ -1,0 +1,18 @@
+{
+  "content_scripts": [
+    {
+      "matches": ["https://www.example.com/*"],
+      "js": [
+        "polyfill.js",
+        "file_com.js"
+      ]
+    },
+    {
+      "matches": ["*://*.example.fr/*"],
+      "js": [
+        "polyfill.js",
+        "file_fr.js"
+      ]
+    }
+  ]
+}

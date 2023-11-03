@@ -5,12 +5,14 @@ const target = process.env.target
 
 const commonSources = {
     // Add common sources to both versions here
-    file_1: './src/file_1.js',
-    file_2: './src/file_2.js',
+    // amazon: './src/amazon.js',
+    // cdiscount: './src/cdiscount.js',
 }
 
 const v2Sources = {
     // Add v2 specific sources here
+    amazon: './src/amazon.js',
+    cdiscount: './src/cdiscount.js',
 }
 
 const v3Sources = {
