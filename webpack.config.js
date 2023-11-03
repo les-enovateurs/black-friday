@@ -1,14 +1,12 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 
-const commonOutputDir = "dist"
-const v2OutputDir = `${commonOutputDir}/v2`
-const v3OutputDir = `${commonOutputDir}/v3`
+const target = process.env.target
 
 const commonSources = {
     // Add common sources to both versions here
-    cdiscount: './src/cdiscount.js',
-    borderify: './src/borderify.js',
+    file_1: './src/file_1.js',
+    file_2: './src/file_2.js',
 }
 
 const v2Sources = {
@@ -21,6 +19,15 @@ const v3Sources = {
 
 const commonConfig = {
     mode: process.env.mode,
+    target: 'web',
+    output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, `dist/${target}`),
+    },
+    devServer: {
+        contentBase: path.join(__dirname, `dist/${target}`),
+        port: 8080,
+    },
     module: {
         rules: [
             {
@@ -32,12 +39,11 @@ const commonConfig = {
             },
         ],
     },
-    target: 'web',
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: "src/icons", to: "icons" },
-                { from: "node_modules/webextension-polyfill/dist/browser-polyfill.js", to: "polyfill.js" },
+                { from: 'src/icons', to: 'icons' },
+                { from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js', to: 'polyfill.js' },
             ],
         }),
     ],
@@ -50,14 +56,6 @@ const v2Config = {
         ...commonSources,
         ...v2Sources
     },
-    output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, v2OutputDir),
-    },
-    devServer: {
-        contentBase: path.join(__dirname, v2OutputDir),
-        port: 8080,
-    },
 }
 
 // Manifest v3 specific configuration
@@ -67,17 +65,9 @@ const v3Config = {
         ...commonSources,
         ...v3Sources
     },
-    output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, v3OutputDir),
-    },
-    devServer: {
-        contentBase: path.join(__dirname, v3OutputDir),
-        port: 8080,
-    },
 }
 
-switch (process.env.target) {
+switch (target) {
     case 'v2':
         module.exports = v2Config
         break
