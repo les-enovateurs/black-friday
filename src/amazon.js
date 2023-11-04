@@ -15,7 +15,9 @@ console.log(iframe)*/
 const pItem = document.createElement("p")
 pItem.innerText = "La black friday c'est nuls"
 
-toto.appendChild(pItem)
+if(toto){
+    toto.appendChild(pItem)
+}
 
 
 // Make a banner
@@ -31,7 +33,9 @@ if('CA_ECHO' === mode) {
     let messages = [
         "Notre mission, vous faire acheter toujours plus ! + 16 % de croissance annuelle grâce à vous ❤️",
         "Un peu d'argent sur votre compte ? On vous aide à le dépenser rapidement !",
-        "Besoin d'un objet inutile ? On a la solution pour vous !"
+        "Besoin d'un objet inutile ? On a la solution pour vous !",
+        "On teste de nouveaux robots humanoïdes pour préparer vos commandes => - d'employés, + 🤑 ",
+        "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts"
     ]
 
     let positionMessage = Math.floor(Math.random() * (messages.length - 0 + 1) + 0);
@@ -80,3 +84,48 @@ else if('FUSEE' === mode){
 }
 
 bannerAmazon.parentNode.insertBefore(bannerKickStarter, bannerAmazon.nextSibling);
+
+
+
+//description de produit
+let descriptionProduit = document.getElementById("productDescription_feature_div")
+if(!descriptionProduit)
+    descriptionProduit = document.getElementById('device-dp-recommendations_feature_div')
+
+if(descriptionProduit){
+    let divMessage = document.createElement("div");
+    let imgDechet = document.createElement("img");
+    let pText = document.createElement("h2");
+    pText.classList.add('default');
+    imgDechet.src = "https://unsplash.com/photos/7_TSzqJms4w/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8ZGVjaGV0fGZyfDB8fHx8MTY5OTEzNDEwMHww&force=true&w=640"
+
+
+    pText.innerText = 'Contribuez à notre montagne de déchets non-recyclés en achetant nos produits 🤑';
+    divMessage.appendChild(pText);
+
+    imgDechet.style.margin = "auto"
+
+    divMessage.appendChild(imgDechet);
+
+
+
+    descriptionProduit.parentNode.insertBefore(divMessage, descriptionProduit.nextSibling);
+}
+
+//Le saviez-vous panier
+let afterPricePanier = document.getElementById("deselect-all")
+if(afterPricePanier) {
+
+    const warningMessage = document.createElement("div");
+
+    warningMessage.innerHTML = '<div id="sc-important-message-alert" class="a-box a-alert a-alert-warning celwidget a-spacing-medium-plus" aria-live="polite" aria-atomic="true" data-csa-c-id="o3uzsn-6vtcx3-rzi58q-dylssm" data-cel-widget="sc-important-message-alert"><div class="a-box-inner a-alert-container"><h4 class="a-alert-heading">57% de notre chiffre d’affaires en France est dissimulé dans des paradis fiscaux</h4><i class="a-icon a-icon-alert"></i><div class="a-alert-content">' +
+        '    <div data-feature-id="imb-message-container" class="a-section a-spacing-none sc-java-remote-feature">' +
+        '                <p class="a-spacing-none a-spacing-top-mini">' +
+        '    Selon l\'association france.attac.org '+
+        '                </p>' +
+        '    </div>' +
+        '                </div></div></div>';
+    afterPricePanier.parentNode.insertBefore(warningMessage, afterPricePanier.nextSibling);
+
+}
+
