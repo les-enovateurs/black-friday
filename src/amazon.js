@@ -1,12 +1,13 @@
-function warningMessageAmazon(title, message){
+function warningMessageAmazon(title, message, type='warning', customTxt='')// type warning, info, success
+{
     const warningMessage = document.createElement("div");
 
-    warningMessage.innerHTML = '<div id="sc-important-message-alert" class="a-box a-alert a-alert-warning celwidget a-spacing-medium-plus" aria-live="polite" aria-atomic="true" data-csa-c-id="o3uzsn-6vtcx3-rzi58q-dylssm" data-cel-widget="sc-important-message-alert"><div class="a-box-inner a-alert-container"><h4 class="a-alert-heading">' +
+    warningMessage.innerHTML = '<div id="sc-important-message-alert" class="a-box a-alert a-alert-'+type+' celwidget a-spacing-medium-plus" aria-live="polite" aria-atomic="true" data-csa-c-id="o3uzsn-6vtcx3-rzi58q-dylssm" data-cel-widget="sc-important-message-alert"><div class="a-box-inner a-alert-container"><h4 class="a-alert-heading">' +
         title +
         '</h4><i class="a-icon a-icon-alert"></i><div class="a-alert-content">' +
         '    <div data-feature-id="imb-message-container" class="a-section a-spacing-none sc-java-remote-feature">' +
         '                <p class="a-spacing-none a-spacing-top-mini">' + message +
-        '                </p>' +
+        '                </p>' + customTxt +
         '    </div>' +
         '                </div></div></div>';
 
@@ -123,15 +124,20 @@ if(descriptionProduit){
 
     divMessage.appendChild(imgDechet);
 
-
-
     descriptionProduit.parentNode.insertBefore(divMessage, descriptionProduit.nextSibling);
 }
 
 //Le saviez-vous panier
-let afterPricePanier = document.getElementById("deselect-all")
+const afterPricePanier = document.getElementById("deselect-all")
 if(afterPricePanier) {
     afterPricePanier.parentNode.insertBefore(warningMessageAmazon('57% de notre chiffre d’affaires en France est dissimulé dans des paradis fiscaux','Selon l\'association france.attac.org'), afterPricePanier.nextSibling);
+
+    const amountPrice = document.getElementById("gutterCartViewForm")
+    amountPrice.parentNode.insertBefore(warningMessageAmazon('Faites un don à une association qui lutte chaque jour au changement climatique ','L\'association' +
+        ' <a href="https://les-enovateurs.com" target="_blank">Les Enovateurs</a> ' +
+        ' oeuvre pour réduire l\'impact du numérique sur l\'environnement.', 'info',
+        '<p>Avec ce geste, vous ne compenserez pas votre achat, ' +
+        'mais c\'est mieux que rien du tout.</p>'), amountPrice.nextSibling);
 }
 else{
     //pas de panier
