@@ -151,6 +151,61 @@ else{
             }
         }
     }
+
+
+    //Prendre conscience de l'achat
+    //Hide buttons and replace by fake button to take conscience
+    const addToCartButton = document.getElementById("atc-declarative")
+    if(addToCartButton){
+        //copy of button
+        addToCartButton.style.visibility = 'hidden';
+        addToCartButton.style.position = 'absolute';
+        const fakeBuy = document.createElement("div");
+
+        fakeBuy.innerHTML =
+            '  <span class="a-declarative" data-action="dp-pre-atc-declarative" id="fakeBtn1">' +
+            '    <span class="a-button a-spacing-small a-button-primary a-button-icon natc-enabled">' +
+            '      <span class="a-button-inner">' +
+            '        <i class="a-icon a-icon-cart"></i>' +
+            '        <input title="Ajouter au panie" data-hover="Sélectionnez ' +
+            '					<b>__dims__</b> à gauche' +
+            '					<br> pour l\'ajouter au panier d\'achat" class="a-button-input attach-dss-atc" type="button" value="Ajouter au panier">' +
+            '        <span  class="a-button-text" aria-hidden="true">Ajouter au panier</span>' +
+            '      </span>' +
+            '    </span>' +
+            '  </span>';
+
+        addToCartButton.parentNode.insertBefore(fakeBuy, addToCartButton.nextSibling);
+
+    }
+
+    const buyNowButton = document.getElementById("buyNow")
+
+    if(buyNowButton){
+        //copy of button
+        buyNowButton.style.visibility = 'hidden'
+        buyNowButton.style.position = 'absolute';
+
+        const fakeBuyNow = document.createElement("div");
+        fakeBuyNow.id="fakeBuyNow";
+        fakeBuyNow.classList.add('a-section')
+        fakeBuyNow.classList.add('a-spacing-base')
+
+        fakeBuyNow.innerHTML =
+            '  <span class="a-button a-button-oneclick a-button-icon onml-buy-now-button">\n' +
+            '    <span class="a-button-inner">\n' +
+            '      <i class="a-icon a-icon-buynow"></i>\n' +
+            '      <input title="Acheter cet article" data-hover="__dims__" class="a-button-input" >\n' +
+            '      <span class="a-button-text" aria-hidden="true"> Acheter cet article </span>\n' +
+            '    </span>\n' +
+            '  </span>';
+
+        buyNowButton.parentNode.insertBefore(fakeBuyNow, buyNowButton.nextSibling);
+    }
+
+
+
+
 }
 
 
