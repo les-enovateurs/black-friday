@@ -1,3 +1,19 @@
+function warningMessageAmazon(title, message){
+    const warningMessage = document.createElement("div");
+
+    warningMessage.innerHTML = '<div id="sc-important-message-alert" class="a-box a-alert a-alert-warning celwidget a-spacing-medium-plus" aria-live="polite" aria-atomic="true" data-csa-c-id="o3uzsn-6vtcx3-rzi58q-dylssm" data-cel-widget="sc-important-message-alert"><div class="a-box-inner a-alert-container"><h4 class="a-alert-heading">' +
+        title +
+        '</h4><i class="a-icon a-icon-alert"></i><div class="a-alert-content">' +
+        '    <div data-feature-id="imb-message-container" class="a-section a-spacing-none sc-java-remote-feature">' +
+        '                <p class="a-spacing-none a-spacing-top-mini">' + message +
+        '                </p>' +
+        '    </div>' +
+        '                </div></div></div>';
+
+    return warningMessage;
+}
+
+
 // console.log("jdkfdjfjdkfjdkfjdkf")
 document.body.style.border = "5px solid red";
 
@@ -115,17 +131,21 @@ if(descriptionProduit){
 //Le saviez-vous panier
 let afterPricePanier = document.getElementById("deselect-all")
 if(afterPricePanier) {
-
-    const warningMessage = document.createElement("div");
-
-    warningMessage.innerHTML = '<div id="sc-important-message-alert" class="a-box a-alert a-alert-warning celwidget a-spacing-medium-plus" aria-live="polite" aria-atomic="true" data-csa-c-id="o3uzsn-6vtcx3-rzi58q-dylssm" data-cel-widget="sc-important-message-alert"><div class="a-box-inner a-alert-container"><h4 class="a-alert-heading">57% de notre chiffre d’affaires en France est dissimulé dans des paradis fiscaux</h4><i class="a-icon a-icon-alert"></i><div class="a-alert-content">' +
-        '    <div data-feature-id="imb-message-container" class="a-section a-spacing-none sc-java-remote-feature">' +
-        '                <p class="a-spacing-none a-spacing-top-mini">' +
-        '    Selon l\'association france.attac.org '+
-        '                </p>' +
-        '    </div>' +
-        '                </div></div></div>';
-    afterPricePanier.parentNode.insertBefore(warningMessage, afterPricePanier.nextSibling);
-
+    afterPricePanier.parentNode.insertBefore(warningMessageAmazon('57% de notre chiffre d’affaires en France est dissimulé dans des paradis fiscaux','Selon l\'association france.attac.org'), afterPricePanier.nextSibling);
 }
+else{
+    //pas de panier
+    const titleProduct = document.getElementById("productTitle")
+    if(titleProduct){//sur un article
+        if(titleProduct.textContent.includes('Apple iPhone 14 (128 Go)')) //Reconditionné Apple iPhone 14 ?
+        {
+            const preloadLandingPage = document.getElementById("rw-preload-landing-image_div")
+            if(preloadLandingPage) {
+                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon('-19% en reconditionné, ça c\'est une véritable offre','Retrouvez l\'iPhone 14 128Go reconditionné à seulement 700€ sur VotreReconditionnée.fr'), preloadLandingPage.nextSibling);
+            }
+        }
+    }
+}
+
+
 
