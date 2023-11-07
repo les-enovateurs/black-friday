@@ -17,7 +17,50 @@ if (productTitleElement) {
     additionalInfo.textContent = bestPoint;
     productTitleElement.insertBefore(additionalInfo, productTitleElement.firstChild);
 }
-// else
-//     console.log('ttt')
 
-document.body.style.border = "5px solid red";
+function messageBeforeCheckout() {
+    const text = "Inserer ici un message pour parler que l'addiction au shopping est un probleme";
+
+    const possibleBaskets = document.getElementsByClassName("l-basket-content u-mb-xl");
+    if(possibleBaskets.length !== 1) {
+        console.error("cannot add a checkout message");
+        return;
+    }
+    const basketDiv = possibleBaskets[0];
+    const cardDiv = document.createElement("div");
+    cardDiv.classList.add(...["bProductLine", "jsbProductLine",  "jsbProductExpressAction"]);
+
+    cardDiv.innerHTML = `<p class='bProductLineDescTitle'>
+        ${text}
+    </p>`;
+
+    basketDiv.insertBefore(cardDiv, basketDiv.firstChild);
+}
+
+function generateBannerMessage() {
+    const possibleBanners = document.getElementsByClassName("overPa1600 c-banner js-banner");
+
+    const bannerMessages = [
+        "Un peu d'argent sur votre compte ? On vous aide à le dépenser rapidement !",
+        "Besoin d'un objet inutile ? On a la solution pour vous !",
+        "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts"
+    ]
+    const randomBannerMessagesIndex = Math.floor(Math.random() * bannerMessages.length);
+
+    if(possibleBanners.length !== 1) {
+        console.error("cannot add a banner message");
+        return;
+    }
+    
+    const banner = possibleBanners[0];
+    const titleDiv = document.createElement("div");
+    titleDiv.style = "font-size: 20px; font-weight: 600; color: black";
+    titleDiv.innerHTML = `
+        <p>${bannerMessages[randomBannerMessagesIndex]}</p>
+    `;
+    banner.appendChild(titleDiv);
+    
+}
+
+generateBannerMessage();
+messageBeforeCheckout();
