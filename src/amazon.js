@@ -254,7 +254,14 @@ function inProduct(){
         {
             const preloadLandingPage = document.getElementById("rw-preload-landing-image_div")
             if(preloadLandingPage) {
-                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon('-19% en reconditionné, voilà une offre qui vaut le détour !','Retrouvez l\'iPhone 14 128Go reconditionné à seulement 700€ sur différents sites BackMarket, '), preloadLandingPage.nextSibling);
+                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon('-19% en reconditionné, voilà une offre qui vaut le détour !','Retrouvez l\'iPhone 14 128Go reconditionné à seulement 700€ sur différents sites Certideal, Recommerce, Rebuy, BackMarket, ...'), preloadLandingPage.nextSibling);
+            }
+        }
+        if(titleProduct.textContent.includes('Apple iPhone 13 (128 Go)')) //Reconditionné Apple iPhone 14 ?
+        {
+            const preloadLandingPage = document.getElementById("rw-preload-landing-image_div")
+            if(preloadLandingPage) {
+                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon('-26% en reconditionné, voilà une offre qui vaut le détour !','Retrouvez l\'iPhone 13 128Go reconditionné à seulement 547€ sur différents sites Certideal, Recommerce, Rebuy, BackMarket, ...'), preloadLandingPage.nextSibling);
             }
         }
     }
