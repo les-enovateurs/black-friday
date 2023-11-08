@@ -236,7 +236,6 @@ function afterPrix(afterPricePanier){
 
     const choosenOneHead = randomIndex(messageCart.length);
 
-
     afterPricePanier.parentNode.insertBefore(warningMessageAmazon(messageCart[choosenOneHead].title,messageCart[choosenOneHead].message), afterPricePanier.nextSibling);
 
     const choosenOne = randomIndex(messagesPossible.length);

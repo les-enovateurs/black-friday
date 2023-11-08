@@ -1,25 +1,45 @@
-const productTitleElement = document.querySelector("#fpBulletPointReadMore");
+// const productTitleElement = document.querySelector("#fpBulletPointReadMore");
+//
+// if (productTitleElement) {
+//     // console.log(productTitleElement, 'ssd')
+//     //identifier l'appareil
+//     let product = '';
+//     let bestPoint = '';
+//     switch (product){
+//         case "pc":
+//             bestPoint = 'Ce magnifique ordinateur contient des minéraux rares polluants et non-utilisable par la suite '
+//             break;
+//         default:
+//             bestPoint = "Un produit qui vous rendra heureux quelques minutes";
+//             break;
+//     }
+//     const additionalInfo = document.createElement("div");
+//     additionalInfo.textContent = bestPoint;
+//     productTitleElement.insertBefore(additionalInfo, productTitleElement.firstChild);
+// }
 
-if (productTitleElement) {
-    // console.log(productTitleElement, 'ssd')
-    //identifier l'appareil
-    let product = '';
-    let bestPoint = '';
-    switch (product){
-        case "pc":
-            bestPoint = 'Ce magnifique ordinateur contient des minéraux rares polluants et non-utilisable par la suite '
-            break;
-        default:
-            bestPoint = "Un produit qui vous rendra heureux quelques minutes";
-            break;
-    }
-    const additionalInfo = document.createElement("div");
-    additionalInfo.textContent = bestPoint;
-    productTitleElement.insertBefore(additionalInfo, productTitleElement.firstChild);
+function randomIndex(max){
+    return Math.floor(Math.random() * max);
 }
 
 function messageBeforeCheckout() {
-    const text = "Inserer ici un message pour parler que l'addiction au shopping est un probleme";
+
+    const message = [
+        {
+            title : "Mettez de côté nos promotions un instant, nous vidons probablement nos vieux stocks",
+            message : "Avez-vous vraiment besoin de ces objets ?"
+        },
+        {
+            title : "Pour faire des économies pour le portefeuille et préserver la planète : pensez au reconditionné et/ou l'occasion",
+            message: "Moins de déchets, moins de pollution et plus d'économies"
+        },
+        {
+            title: "Avant d'acheter, comparez bien nos prix avec d'autres sites et vérifier les prix des derniers mois",
+            message: "Régulièrement les sites e-commerces gonflent les prix quelques semaines avant pour proposer des \"promotions\""
+        }
+    ]
+
+    const choosenOne = randomIndex(message.length);
 
     const possibleBaskets = document.getElementsByClassName("l-basket-content u-mb-xl");
     if(possibleBaskets.length !== 1) {
@@ -31,8 +51,12 @@ function messageBeforeCheckout() {
     cardDiv.classList.add(...["bProductLine", "jsbProductLine",  "jsbProductExpressAction"]);
 
     cardDiv.innerHTML = `<p class='bProductLineDescTitle'>
-        ${text}
-    </p>`;
+        ${message[choosenOne].title}
+    </p>
+    <p>
+        ${message[choosenOne].message}
+    </p>
+    `;
 
     basketDiv.insertBefore(cardDiv, basketDiv.firstChild);
 }
