@@ -79,10 +79,11 @@ function showBanniere(){
             "Un peu d'argent sur votre compte ? On vous aide à le dépenser rapidement !",
             "Besoin d'un objet inutile ? On a la solution pour vous !",
             "On teste de nouveaux robots humanoïdes pour préparer vos commandes => - d'employés, + 🤑 ",
-            "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts"
+            "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts",
+            "Un emploi crée chez nous, le commerce de proximité perd 2,2 emplois"
         ]
 
-        let positionMessage = Math.floor(Math.random() * (messages.length - 0 + 1) + 0);
+        let positionMessage = randomIndex(messages.length);
 
 //source : https://www.lesechos.fr/industrie-services/conso-distribution/amazon-a-depasse-les-10-milliards-deuros-de-chiffre-daffaires-en-france-1981779
 //     bannerKickStarter.textContent = "+ de 10 000 000 000€ de chiffre d'affaires grâce à vos achats ! Merci pour votre confiance ❤️";
@@ -178,15 +179,72 @@ function displayDescription(){
     }
 }
 
+function randomIndex(max){
+    return Math.floor(Math.random() * max);
+}
+
 function afterPrix(afterPricePanier){
-    afterPricePanier.parentNode.insertBefore(warningMessageAmazon('57% de notre chiffre d’affaires en France est dissimulé dans des paradis fiscaux','Selon l\'association france.attac.org'), afterPricePanier.nextSibling);
+    const messagesPossible = [
+        {
+            'title' : 'Faites un don à une association qui lutte chaque jour au changement climatique',
+            'message': 'L\'association' +
+                ' <a href="https://www.helloasso.com/associations/les-enovateurs/formulaires/1" target="_blank">Les Enovateurs</a> ' +
+                ' oeuvre pour réduire l\'impact du numérique sur l\'environnement.'
+        },
+        {
+            'title' : 'Faites un don à une association qui lutte contre l\'obsolescence programmée',
+            'message': 'L\'association' +
+                ' <a href="https://www.halteobsolescence.org/faire-un-don/" target="_blank">HOP</a> ' +
+                ' oeuvre pour rendre nos objets plus durable et réparable.'
+        },
+        {
+            'title' : 'Faites un don à une association qui fait reculer l\'exclusion numérique et sociale',
+            'message': 'L\'association' +
+                ' <a href="https://www.helloasso.com/associations/emmaus-connect/formulaires/1/" target="_blank">Emmaus connect</a> ' +
+                ' oeuvre pour offrir une seconde vie à nos appareils numériques'
+        },
+        {
+            'title' : 'Faites un don à une association qui agit pour construire une tech plus engagée et responsable',
+            'message': 'L\'association' +
+                ' <a href="https://www.helloasso.com/associations/latitudes-exploring-tech-for-good/formulaires/3" target="_blank">Latitudes</a> ' +
+                ' anime des ateliers de sensibilisation au numérique engagé et responsable dans les établissements scolaires'
+        }
+    ];
+
+    const messageCart = [
+        {
+            'title':'Nous misons sur des entrepôts entièrement automatisés d’ici 10 ans',
+            'message':'Moins de salaire = Plus d\'argent pour nous ! (<a href="https://www.clubic.com/pro/entreprises/amazon/actualite-855999-amazon-entrepots-entierement-automatises-10-ans.html">Source: Clubic</a>'
+        },
+        {
+            'title':'A Montélimar, nos salariés en CDI ne restent pas plus de deux ans et demi en moyenne',
+            'message':'Les conditions de travail sont pénibles avec des salaires bas. (<a href="https://rmc.bfmtv.com/actualites/economie/conso/dupin-quotidien-la-face-cachee-d-amazon_AV-201908210239.html">Source : RMC </a>)'
+        },
+        {
+            'title': 'Notre management est brutal, robotisé, nos règles de sécurité enfreintes pour tenir les objectifs, nous contrôlons les pauses toilette…',
+            'message': 'C’est ce que révèlent les 256 salariés de l’entrepôt de Montélimar dans un rapport. 74% des répondants déclarent ressentir des douleurs physiques qu’ils pensent dues à leur travail <a href="https://www.capital.fr/entreprises-marches/amazon-un-rapport-alarmant-sur-les-conditions-de-travail-a-montelimar-1285393">(Source : Capital)</a>'
+        },
+        {
+            'title': 'Nos milliers de braves livreurs pour vous servir',
+            'message': 'Ils livrent entre 80 et 180 colis selon les jours. « Parfois, ça peut dépasser les 200, 220 », constate un chef de dépôt. Un autre livreur de l’est de la France décrit aussi les pressions subies : « Amazon met en place un système de ce qu’ils appellent des "concessions". (Source: <a href="https://www.liberation.fr/france/2018/10/05/dans-la-peau-d-un-forcat-d-amazon_1683525/">Libération</a>)'
+        },
+        {
+            'title': '57% de notre chiffre d’affaires France est dissimulé dans des paradis fiscaux',
+            'message': 'Ce qui nous permet de pratiquer une évasion fiscale massive en déplaçant une grande partie de ses bénéfices vers l’étranger, notamment au Luxembourg. (Source : <a href="https://france.attac.org/nos-publications/notes-et-rapports/article/nouveau-rapport-impunite-fiscale-sociale-et-environnementale-immersion-dans-le">France Attac</a>'
+        }
+    ]
+
+    const choosenOneHead = randomIndex(messageCart.length);
+
+
+    afterPricePanier.parentNode.insertBefore(warningMessageAmazon(messageCart[choosenOneHead].title,messageCart[choosenOneHead].message), afterPricePanier.nextSibling);
+
+    const choosenOne = randomIndex(messagesPossible.length);
 
     const amountPrice = document.getElementById("gutterCartViewForm")
-    amountPrice.parentNode.insertBefore(warningMessageAmazon('Faites un don à une association qui lutte chaque jour au changement climatique ','L\'association' +
-        ' <a href="https://les-enovateurs.com" target="_blank">Les Enovateurs</a> ' +
-        ' oeuvre pour réduire l\'impact du numérique sur l\'environnement.', 'info',
+    amountPrice.parentNode.insertBefore(warningMessageAmazon(messagesPossible[choosenOne].title,messagesPossible[choosenOne].message, 'info',
         '<p>Avec ce geste, vous ne compenserez pas votre achat, ' +
-        'mais c\'est mieux que rien du tout.</p>'), amountPrice.nextSibling);
+        'mais c\'est une première action.</p>'), amountPrice.nextSibling);
 }
 
 function inProduct(){
@@ -197,7 +255,7 @@ function inProduct(){
         {
             const preloadLandingPage = document.getElementById("rw-preload-landing-image_div")
             if(preloadLandingPage) {
-                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon('-19% en reconditionné, voilà une offre qui vaut le détour !','Retrouvez l\'iPhone 14 128Go reconditionné à seulement 700€ sur VotreReconditionné.fr'), preloadLandingPage.nextSibling);
+                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon('-19% en reconditionné, voilà une offre qui vaut le détour !','Retrouvez l\'iPhone 14 128Go reconditionné à seulement 700€ sur différents sites BackMarket, '), preloadLandingPage.nextSibling);
             }
         }
     }
@@ -217,7 +275,7 @@ function inProduct(){
             '    <span class="a-button a-spacing-small a-button-primary a-button-icon natc-enabled">' +
             '      <span class="a-button-inner">' +
             '        <i class="a-icon a-icon-cart"></i>' +
-            '        <input title="Ajouter au panie" data-hover="Sélectionnez ' +
+            '        <input title="Ajouter au panier" data-hover="Sélectionnez ' +
             '					<b>__dims__</b> à gauche' +
             '					<br> pour l\'ajouter au panier d\'achat" class="a-button-input attach-dss-atc" type="button" value="Ajouter au panier">' +
             '        <span  class="a-button-text" aria-hidden="true">Ajouter au panier</span>' +
