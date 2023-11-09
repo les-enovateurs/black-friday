@@ -160,13 +160,14 @@ function onClickBuy(event){
 function showBanniere(){
     // Make a banner
     const bannerAmazon = document.getElementById("nav-belt")
-    const bannerKickStarter = document.createElement("div");
+    if(bannerAmazon){
+        const bannerKickStarter = document.createElement("div");
 
 
-    // const mode = 'CA_ECHO'; //CA_ECHO || Fusee
-    bannerKickStarter.style.height = '33px';
+        // const mode = 'CA_ECHO'; //CA_ECHO || Fusee
+        bannerKickStarter.style.height = '33px';
 
-    // if('CA_ECHO' === mode) {
+        // if('CA_ECHO' === mode) {
 
         let messages = [
             "Notre mission, vous faire acheter toujours plus ! + 16 % de croissance annuelle grâce à vous ❤️",
@@ -188,7 +189,7 @@ function showBanniere(){
         bannerKickStarter.style.color = '#fafafa';
         bannerKickStarter.classList.add("a-size-large");
         bannerKickStarter.classList.add("product-title-word-break");
-    // }
+        // }
 // else if('FUSEE' === mode){
 //     let progressVal = '10%';
 //     let progress = document.createElement("div");
@@ -222,7 +223,8 @@ function showBanniere(){
 //     bannerKickStarter.appendChild(progress);
 // }
 
-    bannerAmazon.parentNode.insertBefore(bannerKickStarter, bannerAmazon.nextSibling);
+        bannerAmazon.parentNode.insertBefore(bannerKickStarter, bannerAmazon.nextSibling);
+    }
 }
 
 function displayMessagePrix(){
