@@ -7,17 +7,19 @@ const commonSources = {
     // Add common sources to both versions here
     // amazon: './src/amazon.js',
     // cdiscount: './src/cdiscount.js',
+    amazon: './src/amazon.js',
+    cdiscount: './src/cdiscount.js'
 }
 
 const v2Sources = {
     // Add v2 specific sources here
-    amazon: './src/amazon.js',
-    cdiscount: './src/cdiscount.js',
-    free: './src/free.js',
+    // amazon: './src/amazon.js',
+    // cdiscount: './src/cdiscount.js'
 }
 
 const v3Sources = {
     // Add v3 specific sources here
+
 }
 
 const commonConfig = {

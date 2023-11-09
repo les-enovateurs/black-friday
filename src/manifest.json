@@ -1,15 +1,13 @@
 {
-  "description": "Back Friday",
+  "description": "Faites la différence à chaque achat en ligne avec EcoAchat, votre compagnon éco-responsable sur le web ! Notre extension vous informe sur l'impact environnemental de vos achats en ligne, vous questionne pour éviter les achats de trop.",
   "manifest_version": 3,
-  "name": "Black Friday",
+  "name": "ÉcoAchat : Achetez en Conscience",
   "version": "1.0",
   "homepage_url": "https://github.com/les-enovateurs/black-friday",
-  "page_action": {
-    "default_icon": {
-      "16": "icons/unknown.jpg",
-      "32": "icons/unknown.jpg"
-    },
-    "default_title": ""
+  "icons": {
+    "16": "icons/money-16.png",
+    "32": "icons/money-32.png",
+    "128": "icons/money-128.png"
   },
   "content_scripts": [
     {
@@ -21,6 +19,11 @@
       "js": ["amazon.js"]
     }
   ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "b7e6552e-f989-432a-bca3-aa5ac3237198@les-enovateurs-b"
+    }
+  },
   "permissions": [
     "activeTab"
   ]
