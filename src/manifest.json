@@ -23,8 +23,5 @@
     "gecko": {
       "id": "b7e6552e-f989-432a-bca3-aa5ac3237198@les-enovateurs-b"
     }
-  },
-  "permissions": [
-    "activeTab"
-  ]
+  }
 }
