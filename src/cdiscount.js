@@ -48,15 +48,17 @@ function messageBeforeCheckout() {
     }
     const basketDiv = possibleBaskets[0];
     const cardDiv = document.createElement("div");
-    cardDiv.classList.add(...["bProductLine", "jsbProductLine",  "jsbProductExpressAction"]);
+    cardDiv.classList.add("bProductLine", "jsbProductLine",  "jsbProductExpressAction");
 
-    cardDiv.innerHTML = `<p class='bProductLineDescTitle'>
-        ${message[choosenOne].title}
-    </p>
-    <p>
-        ${message[choosenOne].message}
-    </p>
-    `;
+    const titleParagraph = document.createElement("p");
+    titleParagraph.classList.add("bProductLineDescTitle");
+    titleParagraph.textContent = message[choosenOne].title;
+
+    const messageParagraph = document.createElement("p");
+    messageParagraph.textContent = message[choosenOne].message;
+
+    cardDiv.appendChild(titleParagraph);
+    cardDiv.appendChild(messageParagraph);
 
     basketDiv.insertBefore(cardDiv, basketDiv.firstChild);
 }
@@ -78,12 +80,17 @@ function generateBannerMessage() {
     
     const banner = possibleBanners[0];
     const titleDiv = document.createElement("div");
-    titleDiv.style = "font-size: 20px; font-weight: 600; color: black";
-    titleDiv.innerHTML = `
-        <p>${bannerMessages[randomBannerMessagesIndex]}</p>
-    `;
+    titleDiv.style.fontSize = "20px";
+    titleDiv.style.fontWeight = "600";
+    titleDiv.style.color = "black";
+
+    const titleParagraph = document.createElement("p");
+    titleParagraph.textContent = bannerMessages[randomBannerMessagesIndex];
+
+    titleDiv.appendChild(titleParagraph);
     banner.appendChild(titleDiv);
-    
+
+
 }
 
 generateBannerMessage();
