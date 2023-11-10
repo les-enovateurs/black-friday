@@ -17,6 +17,10 @@
     {
       "matches": ["https://*.amazon.fr/*"],
       "js": ["amazon.js"]
+    },{
+      "matches": ["https://www.temu.com/*"],
+      "js": ["temu.js"],
+      "run_at": "document_end"
     }
   ],
   "browser_specific_settings": {
