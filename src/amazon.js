@@ -264,7 +264,7 @@ function displayDescription(){
         imgDechet.src = "https://unsplash.com/photos/7_TSzqJms4w/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8ZGVjaGV0fGZyfDB8fHx8MTY5OTEzNDEwMHww&force=true&w=640"
 
 
-        pText.innerText = 'Contribuez à notre montagne de déchets non-recyclés en achetant nos produits 🤑';
+        pText.textContent = 'Contribuez à notre montagne de déchets non-recyclés en achetant nos produits 🤑';
         divMessage.appendChild(pText);
 
         imgDechet.style.margin = "auto"

@@ -80,13 +80,64 @@ function cart(){
     }
     else{
         const basketDiv = possibleBaskets[0];
-        const titleParagraph = document.createElement('div')
-        titleParagraph.classList.add(...['_1zYTUuvV','_3xkxWP5c'])
-        titleParagraph.innerHTML = '<div class="_2KKJM5DO"><div class="_1FTV-YvS"><div class="_1bAz04FF"><div><img data-cui-image="1" data-state="succ" class="eIhG16Mc " src="https://aimg.kwcdn.com/upload_aimg/temu/be808b00-7243-47ec-83a0-41014f0a9720.png.slim.png?imageView2/2/w/800/q/70" alt="" style="height:22px;width:22px" aria-hidden="true" data-did-mount="1"></div></div><div class="_1y7qebj5"><div class="_2xDbifG1"></div></div><div class="_3SEPECJN"><div class="_3Pw1pBZP"><span style="font-weight:500;color:#000000;font-size:16px" tabindex="0" class="">Avez-vous vraiment besoin de ces objets qui vont faire le tour du monde pour arriver à vous ?</span></div></div><div></div></div></div>';
-        basketDiv.previousSibling.appendChild(titleParagraph)
+        const titleParagraph = document.createElement('div');
+        titleParagraph.classList.add('_1zYTUuvV', '_3xkxWP5c');
+
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('_2KKJM5DO');
+
+        const pImageC = document.createElement('div');
+        pImageC.classList.add('_3Pw1pBZP');
+
+        const containerDiv = document.createElement('div');
+        containerDiv.classList.add('_1FTV-YvS');
+
+        const separatorDiv = document.createElement('div');
+        separatorDiv.classList.add('_1y7qebj5');
+
+        const inSepDiv = document.createElement('div');
+        inSepDiv.classList.add('_2xDbifG1');
+
+        separatorDiv.appendChild(inSepDiv)
+
+        const containImg = document.createElement('div');
+        containImg.classList.add('_1bAz04FF');
+
+        const imgElement = document.createElement('img');
+        imgElement.setAttribute('data-cui-image', '1');
+        imgElement.setAttribute('data-state', 'succ');
+        imgElement.classList.add('eIhG16Mc');
+        imgElement.setAttribute('src', 'https://aimg.kwcdn.com/upload_aimg/temu/be808b00-7243-47ec-83a0-41014f0a9720.png.slim.png?imageView2/2/w/800/q/70');
+        imgElement.setAttribute('alt', '');
+        imgElement.setAttribute('style', 'height:22px;width:22px');
+        imgElement.setAttribute('aria-hidden', 'true');
+        imgElement.setAttribute('data-did-mount', '1');
+
+        containImg.appendChild(imgElement);
+
+        const titleContainer = document.createElement('div');
+        titleContainer.classList.add('_3SEPECJN');
+
+        const spanElement = document.createElement('span');
+        spanElement.setAttribute('style', 'font-weight:500;color:#000000;font-size:16px');
+        spanElement.setAttribute('tabindex', '0');
+        spanElement.innerText = 'Avez-vous vraiment besoin de ces objets qui vont faire le tour du monde pour arriver à vous ?';
+
+        pImageC.appendChild(spanElement);
+        titleContainer.appendChild(pImageC);
+
+        containerDiv.appendChild(containImg);
+        containerDiv.appendChild(separatorDiv);
+        containerDiv.appendChild(titleContainer);
+
+        imageContainer.appendChild(containerDiv);
+
+        titleParagraph.appendChild(imageContainer);
+
+        basketDiv.previousSibling.appendChild(titleParagraph);
 
         const btnBuy = document.getElementsByClassName("_3fKiu5wx _3zN5SumS _253TaDHo checkoutButton");
-        if(btnBuy.length !== 1) {
+        if(btnBuy.length < 1) {
             console.error("cannot add a checkout message");
             return;
         }
@@ -96,7 +147,6 @@ function cart(){
         textBtn.textContent = 'Les promotions, peu d\'articles disponibles, des milliers de ventes...';
         const textBtnP = document.createElement('p')
         textBtnP.textContent = 'Se sont des techniques de ventes réputés pour vous faire acheter plus et vous rendre accro. Ne tombez pas dans le piège';
-
 
         textBtn.style.color = '#910909'
         textBtn.style.fontSize = '19px';
