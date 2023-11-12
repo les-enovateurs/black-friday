@@ -2,11 +2,12 @@
   "description": "Faites la différence à chaque achat en ligne avec EcoAchat, votre compagnon éco-responsable sur le web !",
   "manifest_version": 2,
   "name": "ÉcoAchat : Achetez en Conscience",
-  "version": "1.3",
+  "version": "1.4",
   "homepage_url": "https://github.com/les-enovateurs/black-friday",
   "icons": {
     "16": "icons/money-16.png",
     "32": "icons/money-32.png",
+    "48": "icons/money-48.png",
     "128": "icons/money-128.png"
   },
   "content_scripts": [
