@@ -26,16 +26,17 @@ function messageBeforeCheckout() {
 
     const message = [
         {
-            title : "Mettez de côté nos promotions un instant, nous vidons probablement nos vieux stocks",
+            title : "Des promotions exclusives ? Entre nous, c'est juste que nous avons besoin de vider nos vieux stocks.",
             message : "Avez-vous vraiment besoin de ces objets ?"
         },
         {
-            title : "Pour faire des économies pour le portefeuille et préserver la planète : pensez au reconditionné et/ou l'occasion",
-            message: "Moins de déchets, moins de pollution et plus d'économies"
+            title : "Des économies pour votre compte en banque, et une planète préservée : pour vos achats, pensez au reconditionné et à l'occasion",
+            message: "Moins de déchets, moins de pollution, plus d'économies !"
         },
         {
-            title: "Avant d'acheter, comparez bien nos prix avec d'autres sites et vérifier les prix des derniers mois",
-            message: "Régulièrement les sites e-commerces gonflent les prix quelques semaines avant pour proposer des \"promotions\""
+            title: "Avant d'acheter, comparez bien nos prix avec d'autres sites... et vérifiez les prix des derniers mois",
+            message: "Régulièrement, les sites e-commerce gonflent leurs prix quelques semaines avant de vous proposer des \"promotions\"..."
+            //https://www.radiofrance.fr/franceinter/fausses-reductions-produits-plus-chers-le-black-friday-jour-des-fausses-bonnes-affaires-selon-une-etude-2398468
         }
     ]
 
@@ -69,7 +70,7 @@ function generateBannerMessage() {
     const bannerMessages = [
         "Un peu d'argent sur votre compte ? On vous aide à le dépenser rapidement !",
         "Besoin d'un objet inutile ? On a la solution pour vous !",
-        "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts"
+        "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts."
     ]
     const randomBannerMessagesIndex = Math.floor(Math.random() * bannerMessages.length);
 
@@ -83,6 +84,7 @@ function generateBannerMessage() {
     titleDiv.style.fontSize = "20px";
     titleDiv.style.fontWeight = "600";
     titleDiv.style.color = "black";
+    titleDiv.style.textAlign = 'center'
 
     const titleParagraph = document.createElement("p");
     titleParagraph.textContent = bannerMessages[randomBannerMessagesIndex];

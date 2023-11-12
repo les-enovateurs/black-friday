@@ -4,6 +4,10 @@ function getpWarningMessage(){
     return messageParagraph;
 }
 
+function randomIndex(max){
+    return Math.floor(Math.random() * max);
+}
+
 function getpWithSource(message, linkSource='', nameSource=''){
 
     const messageW  = getpWarningMessage();
@@ -157,6 +161,32 @@ function onClickBuy(event){
     }
 }
 
+const messagesBan = [
+    "Notre mission, vous faire acheter toujours plus ! + 16 % de croissance annuelle grâce à vous ❤️",
+    "Un peu d'argent sur votre compte ? On vous aide à le dépenser rapidement !",
+    "Besoin d'un objet inutile ? On a la solution pour vous !",
+    "On teste de nouveaux robots humanoïdes pour préparer vos commandes => - d'employés, + 🤑 ",
+    "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts",
+    "Pour chaque emploi créé chez nous, vos commerces de proximité perdent 2,2 emplois"
+]
+
+function showBanniereMobile() {
+    const bannerAmazon = document.getElementById("nav-logobar");
+    if(bannerAmazon){
+        const bannerKickStarter = document.createElement("div");
+        let positionMessage = randomIndex(messagesBan.length);
+        bannerKickStarter.textContent = messagesBan[positionMessage];
+
+// bannerKickStarter.style.background = '#fafafa';
+        bannerKickStarter.style.textAlign = 'center';
+        bannerKickStarter.style.color = '#000';
+        bannerKickStarter.classList.add("a-size-large");
+        bannerKickStarter.classList.add("product-title-word-break");
+        bannerAmazon.parentNode.insertBefore(bannerKickStarter, bannerAmazon.nextSibling);
+
+    }
+}
+
 function showBanniere(){
     // Make a banner
     const bannerAmazon = document.getElementById("nav-belt")
@@ -169,20 +199,11 @@ function showBanniere(){
 
         // if('CA_ECHO' === mode) {
 
-        let messages = [
-            "Notre mission, vous faire acheter toujours plus ! + 16 % de croissance annuelle grâce à vous ❤️",
-            "Un peu d'argent sur votre compte ? On vous aide à le dépenser rapidement !",
-            "Besoin d'un objet inutile ? On a la solution pour vous !",
-            "On teste de nouveaux robots humanoïdes pour préparer vos commandes => - d'employés, + 🤑 ",
-            "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts",
-            "Un emploi crée chez nous, le commerce de proximité perd 2,2 emplois"
-        ]
-
-        let positionMessage = randomIndex(messages.length);
+        let positionMessage = randomIndex(messagesBan.length);
 
 //source : https://www.lesechos.fr/industrie-services/conso-distribution/amazon-a-depasse-les-10-milliards-deuros-de-chiffre-daffaires-en-france-1981779
 //     bannerKickStarter.textContent = "+ de 10 000 000 000€ de chiffre d'affaires grâce à vos achats ! Merci pour votre confiance ❤️";
-        bannerKickStarter.textContent = messages[positionMessage];
+        bannerKickStarter.textContent = messagesBan[positionMessage];
 
 // bannerKickStarter.style.background = '#fafafa';
         bannerKickStarter.style.textAlign = 'center';
@@ -275,10 +296,6 @@ function displayDescription(){
     }
 }
 
-function randomIndex(max){
-    return Math.floor(Math.random() * max);
-}
-
 function afterPrix(afterPricePanier){
 
     const MEnov  = getpWarningMessage();
@@ -287,7 +304,7 @@ function afterPrix(afterPricePanier){
     lien.href = 'https://www.helloasso.com/associations/les-enovateurs/formulaires/1';
     lien.target = '_blank';
     lien.textContent = 'Les Enovateurs';
-    let part2 = document.createTextNode(' oeuvre pour réduire l\'impact du numérique sur l\'environnement.');
+    let part2 = document.createTextNode(' oeuvre pour réduire l\'impact du numérique sur la planète.');
 
     MEnov.appendChild(part1);
     MEnov.appendChild(lien);
@@ -300,7 +317,7 @@ function afterPrix(afterPricePanier){
     lien.href = 'https://www.halteobsolescence.org/faire-un-don/';
     lien.target = '_blank';
     lien.textContent = 'HOP';
-    part2 = document.createTextNode(' oeuvre pour rendre nos objets plus durable et réparable.');
+    part2 = document.createTextNode(' oeuvre pour rendre nos objets plus durables et réparables.');
 
     MHop.appendChild(part1);
     MHop.appendChild(lien);
@@ -314,9 +331,9 @@ function afterPrix(afterPricePanier){
     lien.textContent = 'Emmaus connect';
     part2 = document.createTextNode(' oeuvre pour offrir une seconde vie à nos appareils numériques');
 
-    MHop.appendChild(part1);
-    MHop.appendChild(lien);
-    MHop.appendChild(part2);
+    MEmmaus.appendChild(part1);
+    MEmmaus.appendChild(lien);
+    MEmmaus.appendChild(part2);
 
     const MLatitude  = getpWarningMessage();
     part1 = document.createTextNode('L\'association ');
@@ -324,7 +341,7 @@ function afterPrix(afterPricePanier){
     lien.href = 'https://www.helloasso.com/associations/latitudes-exploring-tech-for-good/formulaires/3';
     lien.target = '_blank';
     lien.textContent = 'Latitudes';
-    part2 = document.createTextNode(' anime des ateliers de sensibilisation au numérique engagé et responsable dans les établissements scolaires');
+    part2 = document.createTextNode(' anime des ateliers de sensibilisation au numérique responsable dans les établissements scolaires');
 
     MLatitude.appendChild(part1);
     MLatitude.appendChild(lien);
@@ -332,7 +349,7 @@ function afterPrix(afterPricePanier){
 
     const messagesPossible = [
         {
-            'title' : 'Faites un don à une association qui lutte chaque jour au changement climatique',
+            'title' : 'Faites un don à une association qui se mobilise pour un numérique responsable, éthique et accessible',
             'message': MEnov
         },
         {
@@ -351,24 +368,24 @@ function afterPrix(afterPricePanier){
 
     const messageCart = [
         {
-            'title':'Nous misons sur des entrepôts entièrement automatisés d’ici 10 ans',
-            'message': getpWithSource('Moins de salaire = Plus d\'argent pour nous !', 'https://www.clubic.com/pro/entreprises/amazon/actualite-855999-amazon-entrepots-entierement-automatises-10-ans.html','Clubic')
+            'title':'Nous misons sur des entrepôts entièrement automatisés d’ici 10 ans.',
+            'message': getpWithSource('Moins de salaires = Plus d\'argent pour nous !', 'https://www.clubic.com/pro/entreprises/amazon/actualite-855999-amazon-entrepots-entierement-automatises-10-ans.html','Clubic')
         },
         {
-            'title':'A Montélimar, nos salariés en CDI ne restent pas plus de deux ans et demi en moyenne',
-            'message': getpWithSource('Les conditions de travail sont pénibles avec des salaires bas.','https://rmc.bfmtv.com/actualites/economie/conso/dupin-quotidien-la-face-cachee-d-amazon_AV-201908210239.html','RMC')
+            'title':'A Montélimar, nos salariés en CDI ne restent pas plus de 2 ans 1/2 en moyenne à leur poste.',
+            'message': getpWithSource('Des conditions de travail pénibles, des salaires bas.','https://rmc.bfmtv.com/actualites/economie/conso/dupin-quotidien-la-face-cachee-d-amazon_AV-201908210239.html','RMC')
         },
         {
-            'title': 'Notre management est brutal, robotisé, nos règles de sécurité enfreintes pour tenir les objectifs, nous contrôlons les pauses toilette…',
-            'message': getpWithSource('C’est ce que révèlent les 256 salariés de l’entrepôt de Montélimar dans un rapport. 74% des répondants déclarent ressentir des douleurs physiques qu’ils pensent dues à leur travail','https://www.capital.fr/entreprises-marches/amazon-un-rapport-alarmant-sur-les-conditions-de-travail-a-montelimar-1285393','Capital')
+            'title': 'Notre management est brutal, robotisé. Nos règles de sécurité sont enfreintes pour tenir les objectifs. Nous contrôlons même les pauses toilettes…',
+            'message': getpWithSource('C’est ce que révèlent les 256 salariés de l’entrepôt de Montélimar dans un rapport. 74% des répondants déclarent ressentir des douleurs physiques liées à leur travail.','https://www.capital.fr/entreprises-marches/amazon-un-rapport-alarmant-sur-les-conditions-de-travail-a-montelimar-1285393','Capital')
         },
         {
-            'title': 'Nos milliers de braves livreurs pour vous servir',
-            'message': getpWithSource('Ils livrent entre 80 et 180 colis selon les jours. « Parfois, ça peut dépasser les 200, 220 », constate un chef de dépôt. Un autre livreur de l’est de la France décrit aussi les pressions subies : « Amazon met en place un système de ce qu’ils appellent des "concessions".','https://www.liberation.fr/france/2018/10/05/dans-la-peau-d-un-forcat-d-amazon_1683525/','Libération')
+            'title': 'Des milliers de livreurs exploités pour vous servir',
+            'message': getpWithSource('Ils livrent entre 80 et 180 colis selon les jours. « Parfois, ça peut dépasser les 200, 220 », constate un chef de dépôt.','https://www.liberation.fr/france/2018/10/05/dans-la-peau-d-un-forcat-d-amazon_1683525/','Libération')
         },
         {
-            'title': '57% de notre chiffre d’affaires France est dissimulé dans des paradis fiscaux',
-            'message': getpWithSource('Ce qui nous permet de pratiquer une évasion fiscale massive en déplaçant une grande partie de ses bénéfices vers l’étranger, notamment au Luxembourg.','https://france.attac.org/nos-publications/notes-et-rapports/article/nouveau-rapport-impunite-fiscale-sociale-et-environnementale-immersion-dans-le','France Attac')
+            'title': '57% de notre chiffre d’affaires en France est dissimulé dans des paradis fiscaux',
+            'message': getpWithSource('On pratique une évasion fiscale massive en déplaçant une grande partie de nos bénéfices vers l’étranger, notamment au Luxembourg.','https://france.attac.org/nos-publications/notes-et-rapports/article/nouveau-rapport-impunite-fiscale-sociale-et-environnementale-immersion-dans-le','France Attac')
         }
     ]
 
@@ -377,28 +394,61 @@ function afterPrix(afterPricePanier){
 
     const choosenOne = randomIndex(messagesPossible.length);
     const amountPrice = document.getElementById("gutterCartViewForm")
+    if(amountPrice){
+        amountPrice.parentNode.insertBefore(warningMessageAmazon(messagesPossible[choosenOne].title,messagesPossible[choosenOne].message, 'info',
+            'Avec ce geste, vous ne compenserez pas votre achat, ' +
+            'mais c\'est une première action.'), amountPrice.nextSibling);
+    }
+    else{
+        const BuyBox = document.getElementById("sc-mini-buy-box")
+        if(BuyBox){
+            console.log(messagesPossible[choosenOne].title,messagesPossible[choosenOne].message)
+            BuyBox.parentNode.insertBefore(warningMessageAmazon(messagesPossible[choosenOne].title,messagesPossible[choosenOne].message, 'info',
+                'Avec ce geste, vous ne compenserez pas votre achat, ' +
+                'mais c\'est une première action.'), BuyBox.nextSibling);
+        }
+    }
 
-    amountPrice.parentNode.insertBefore(warningMessageAmazon(messagesPossible[choosenOne].title,messagesPossible[choosenOne].message, 'info',
-        'Avec ce geste, vous ne compenserez pas votre achat, ' +
-        'mais c\'est une première action.'), amountPrice.nextSibling);
+
 }
 
 function inProduct(){
     //pas de panier
     const titleProduct = document.getElementById("productTitle")
+    const identiPhone14 = 'Apple iPhone 14 (128 Go)';
+    const identiPhone13 = 'Apple iPhone 13 (128 Go)';
+    const messageiPhone14 = '-19% en reconditionné, voilà une offre qui vaut le détour !';
+    const warningiPhone14 = 'Retrouvez l\'iPhone 14 128Go reconditionné à seulement 700€ sur Certideal, Recommerce, Rebuy, BackMarket, ...';
+    const messageiPhone13 = '-26% en reconditionné, voilà une offre qui vaut le détour !';
+    const warningiPhone13 = 'Retrouvez l\'iPhone 13 128Go reconditionné à seulement 547€ sur Certideal, Recommerce, Rebuy, BackMarket, ...';
+
+
     if(titleProduct){//sur un article
-        if(titleProduct.textContent.includes('Apple iPhone 14 (128 Go)')) //Reconditionné Apple iPhone 14 ?
+        if(titleProduct.textContent.includes(identiPhone14)) //Reconditionné Apple iPhone 14 ?
         {
             const preloadLandingPage = document.getElementById("rw-preload-landing-image_div")
             if(preloadLandingPage) {
-                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon('-19% en reconditionné, voilà une offre qui vaut le détour !',simplePWarning('Retrouvez l\'iPhone 14 128Go reconditionné à seulement 700€ sur différents sites Certideal, Recommerce, Rebuy, BackMarket, ...')), preloadLandingPage.nextSibling);
+                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon(messageiPhone14,simplePWarning(warningiPhone14)), preloadLandingPage.nextSibling);
             }
         }
-        if(titleProduct.textContent.includes('Apple iPhone 13 (128 Go)')) //Reconditionné Apple iPhone 14 ?
+        if(titleProduct.textContent.includes(identiPhone13)) //Reconditionné Apple iPhone 14 ?
         {
             const preloadLandingPage = document.getElementById("rw-preload-landing-image_div")
             if(preloadLandingPage) {
-                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon('-26% en reconditionné, voilà une offre qui vaut le détour !',simplePWarning('Retrouvez l\'iPhone 13 128Go reconditionné à seulement 547€ sur différents sites Certideal, Recommerce, Rebuy, BackMarket, ...')), preloadLandingPage.nextSibling);
+                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon(messageiPhone13,simplePWarning(warningiPhone13)), preloadLandingPage.nextSibling);
+            }
+        }
+    }
+    else{//maybe mobile
+        const titleProductMobile = document.getElementById("title")
+        if(titleProductMobile) {//sur un article
+            if(titleProductMobile.textContent.includes(identiPhone14)) //Reconditionné Apple iPhone 14 ?
+            {
+                titleProductMobile.parentNode.insertBefore(warningMessageAmazon(messageiPhone14,simplePWarning(warningiPhone14)), titleProductMobile.nextSibling);
+            }
+            if(titleProductMobile.textContent.includes(identiPhone13)) //Reconditionné Apple iPhone 14 ?
+            {
+                titleProductMobile.parentNode.insertBefore(warningMessageAmazon(messageiPhone13,simplePWarning(warningiPhone13)), titleProductMobile.nextSibling);
             }
         }
     }
@@ -506,17 +556,26 @@ function inProduct(){
 }
 
 showBanniere();
+showBanniereMobile();
+
 // displayDescription();
 
 
 //Le saviez-vous panier
 const afterPricePanier = document.getElementById("deselect-all")
-if(afterPricePanier) {
+if (afterPricePanier) {
     afterPrix(afterPricePanier);
+} else {
+    const priceMobile = document.getElementById('sc-buy-box-ptc-button');
+    if (priceMobile) {
+        afterPrix(priceMobile);
+    } else {
+        inProduct();
+    }
 }
-else{
-  inProduct();
-}
 
 
+console.error('knlknkln')
 
+
+// document.body.style.border = "5px solid red";

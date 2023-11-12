@@ -6,16 +6,15 @@ function messageBeforeCheckout() {
 
     const message = [
         {
-            title : "Mettez de côté nos promotions un instant, nous vidons probablement nos vieux stocks",
+            title : "Des promotions exclusives ? Entre nous, c'est juste que nous avons besoin de vider nos vieux stocks.",
             message : "Avez-vous vraiment besoin de ces objets ?"
         },
         {
-            title : "Pour faire des économies pour le portefeuille et préserver la planète : pensez au reconditionné et/ou l'occasion",
-            message: "Moins de déchets, moins de pollution et plus d'économies"
+            title : "Des économies pour votre compte en banque, et une planète préservée : pour vos achats, pensez au reconditionné et à l'occasion",
+            message: "Moins de déchets, moins de pollution, plus d'économies !"
         },
-        {
-            title: "Avant d'acheter, comparez bien nos prix avec d'autres sites et vérifier les prix des derniers mois",
-            message: "Régulièrement les sites e-commerces gonflent les prix quelques semaines avant pour proposer des \"promotions\""
+        {title: "Avant d'acheter, comparez bien nos prix avec d'autres sites... et vérifiez les prix des derniers mois",
+            message: "Régulièrement, les sites e-commerce gonflent leurs prix quelques semaines avant de vous proposer des \"promotions\"..."
         }
     ]
 
@@ -48,13 +47,12 @@ function generateBannerMessage() {
 
     if(possibleBanners && possibleBanners.childNodes.length > 0){
         const bannerMessages = [
-            "Nos produits livrés sont de mauvaises qualités (ou non conformes) mais vous aimez tellement acheter",
-            "Nos produits ne respectent pas les standards de qualité exigés par l’Union européenne mais vous achetez toujours...",
-            "Aux Etats-Unis, nous sommes accusée de ne rien faire pour empêcher le travail forcé.",
-            "On perd en moyenne 30€ par commande mais on aime aspirer vos données personnelles 😉",
-            "Un cabinet américain nous accuse d'utiliser un logiciel malveillant, espion et dangereux",
-            "Pensez bien à ajouter les frais de douane que vous aurez à payer en récupérant notre colis",
-            "Un problème avec une commande, il faudra patienter : nous ne sommes pas facile à contacter"
+            "Nos produits sont de très mauvaise qualité (et parfois non-conformes), mais vous aimez tellement acheter des objets à petits prix : ça nous fait plaisir !",
+            "Nos produits ne respectent pas les standards de qualité de l’Union européenne. Mais vous les achetez toujours, merci à vous !",
+            "Aux Etats-Unis, nous sommes accusés de ne rien faire pour empêcher le travail forcé.",
+            "On perd en moyenne 30€ par commande mais on adore aspirer vos données personnelles 😉",
+            "Surprise ! N'oubliez pas de payer les frais de douane supplémentaires en récupérant vos colis.",
+            "Un problème avec votre commande ? il faudra patienter : nous ne sommes pas faciles à contacter..."
         ]
         const randomBannerMessagesIndex = randomIndex(bannerMessages.length);
 
@@ -121,7 +119,7 @@ function cart(){
         const spanElement = document.createElement('span');
         spanElement.setAttribute('style', 'font-weight:500;color:#000000;font-size:16px');
         spanElement.setAttribute('tabindex', '0');
-        spanElement.innerText = 'Avez-vous vraiment besoin de ces objets qui vont faire le tour du monde pour arriver à vous ?';
+        spanElement.innerText = 'Avez-vous vraiment besoin de ces objets qui vont faire le tour du monde juste pour vous ?';
 
         pImageC.appendChild(spanElement);
         titleContainer.appendChild(pImageC);
@@ -144,9 +142,9 @@ function cart(){
         const btnBuyDiv = btnBuy[0];
         const textBtn = document.createElement('p')
         const divM = document.createElement('div')
-        textBtn.textContent = 'Les promotions, peu d\'articles disponibles, des milliers de ventes...';
+        textBtn.textContent = 'Encore un peu de place chez vous ? Remplissez, remplissez votre panier et vos placards !';
         const textBtnP = document.createElement('p')
-        textBtnP.textContent = 'Se sont des techniques de ventes réputés pour vous faire acheter plus et vous rendre accro. Ne tombez pas dans le piège';
+        textBtnP.textContent = 'Plus de place chez vous ? Remplissez la niche du chien, le garage, la boîte aux lettres...';
 
         textBtn.style.color = '#910909'
         textBtn.style.fontSize = '19px';

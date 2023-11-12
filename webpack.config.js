@@ -8,7 +8,8 @@ const commonSources = {
     // amazon: './src/amazon.js',
     // cdiscount: './src/cdiscount.js',
     amazon: './src/amazon.js',
-    cdiscount: './src/cdiscount.js'
+    cdiscount: './src/cdiscount.js',
+    temu: './src/temu.js'
 }
 
 const v2Sources = {
