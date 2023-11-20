@@ -18,6 +18,16 @@
 //     productTitleElement.insertBefore(additionalInfo, productTitleElement.firstChild);
 // }
 
+function getpWithSource(message, linkSource = '', nameSource = '') {
+
+    let messageW = message;
+    if ('' !== linkSource) {
+        messageW += ' (Source : ' + nameSource + ')';
+    }
+
+    return messageW;
+}
+
 function randomIndex(max){
     return Math.floor(Math.random() * max);
 }
@@ -26,19 +36,42 @@ function messageBeforeCheckout() {
 
     const message = [
         {
-            title : "Des promotions exclusives ? Entre nous, c'est juste que nous avons besoin de vider nos vieux stocks.",
-            message : "Avez-vous vraiment besoin de ces objets ?"
+            'title': 'Saviez-vous que vos colis contiennent en moyenne 50% de vide 😲 ?',
+            'message': getpWithSource('A la livraison, c\'est beaucoup de carburant gaspillé pour ne rien transporter...', 'https://infos.ademe.fr/article-magazine/limpact-environnemental-du-commerce-en-ligne', 'ADEME')
         },
         {
-            title : "Des économies pour votre compte en banque, et une planète préservée : pour vos achats, pensez au reconditionné et à l'occasion",
-            message: "Moins de déchets, moins de pollution, plus d'économies !"
+            'title': '30% des articles réexpédiés par les clients finissent à la poubelle, selon une étude menée en Allemagne.',
+            'message': getpWithSource('Un gâchis monumental !', 'https://www.rtbf.be/article/black-friday-achats-impulsifs-retours-invendus-et-gros-gachis-10078688', 'RTBF')
         },
         {
-            title: "Avant d'acheter, comparez bien nos prix avec d'autres sites... et vérifiez les prix des derniers mois",
-            message: "Régulièrement, les sites e-commerce gonflent leurs prix quelques semaines avant de vous proposer des \"promotions\"..."
-            //https://www.radiofrance.fr/franceinter/fausses-reductions-produits-plus-chers-le-black-friday-jour-des-fausses-bonnes-affaires-selon-une-etude-2398468
+            'title': 'Si j’achète neuf, j\'achète durable.',
+            'message': getpWithSource('Je privilégie les appareils porteurs d\'un bon indice de réparabilité !', 'https://epargnonsnosressources.gouv.fr/indice-de-reparabilite/', 'ADEME')
+        },
+        {
+            'title': 'Avant d\'acheter, répondez au quizz de l\'Agence pour la transition...',
+            'message': getpWithSource('...pour vous assurer que vous faites le bon choix.', 'https://epargnonsnosressources.gouv.fr/evaluer-besoin-avant-achat/', 'ADEME')
+        },
+        {
+            'title': 'Avant de remplacer mon appareil en panne',
+            'message': getpWithSource('Je lance un petit diagnostic sur le site de l\'Agence de la transition', 'https://epargnonsnosressources.gouv.fr/diagnostic-pannes-appareils/', 'ADEME')
+        },
+        {
+            'title': '1 MILLIARD DE COLIS/AN : c’est le volume d’activité estimé pour le secteur du commerce en ligne en France',
+            'message': getpWithSource('1 million de tonnes équivalent CO2/an environ', 'https://infos.ademe.fr/article-magazine/limpact-environnemental-du-commerce-en-ligne/', 'ADEME')
+        },
+        {
+            'title': '1/3 des retraits de colis sont spécialement réalisés en voiture !',
+            'message': getpWithSource('Et si vous regroupiez vos déplacements, ou utilisiez un moyen de transport plus écologique ?', 'https://www.ecologie.gouv.fr/campagne-nos-objets-ont-plein-d-avenirs', 'ADEME')
+        },
+        {
+            'title': '2,5 tonnes : c\'est le poids total de tous les objets accumulés chez nous (en moyenne). ',
+            'message': getpWithSource('Et si on mettait notre logement au régime ?', 'https://www.ecologie.gouv.fr/campagne-nos-objets-ont-plein-d-avenirs', 'ADEME')
+        },
+        {
+            'title': 'La fabrication d’un ordinateur de 2 Kg mobilise 800 Kg de matières premières et génère 124 Kg de CO2.',
+            'message': getpWithSource('Prenons soin de nos appareils, et faisons-les durer !', 'https://cnm.fr/wp-content/uploads/2021/08/ademe_guide-pratique-face-cachee-numerique.pdf', 'ADEME')
         }
-    ]
+        ]
 
     const choosenOne = randomIndex(message.length);
 
@@ -68,9 +101,10 @@ function generateBannerMessage() {
     const possibleBanners = document.getElementsByClassName("overPa1600 c-banner js-banner");
 
     const bannerMessages = [
-        "Un peu d'argent sur votre compte ? On vous aide à le dépenser rapidement !",
-        "Besoin d'un objet inutile ? On a la solution pour vous !",
-        "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts."
+        "En moyenne, vos colis contiennent 50% de vide 😲 ! Résultat : un suremballage complètement inutile. (source : ADEME)",
+        "30% des articles réexpédiés par les clients finissent à la poubelle. Un gâchis monumental ! (source : RTBF)",
+        "1/3 des retraits de colis sont spécialement réalisés en voiture 🌪️ (source : ADEME)",
+        "2,5 tonnes : poids total des objets accumulés chez nous. Et si on mettait notre logement au régime ? (source : ADEME)"
     ]
     const randomBannerMessagesIndex = Math.floor(Math.random() * bannerMessages.length);
 

@@ -1,41 +1,40 @@
-function getpWarningMessage(){
+function getpWarningMessage() {
     var messageParagraph = document.createElement('p');
     messageParagraph.className = 'a-spacing-none a-spacing-top-mini';
     return messageParagraph;
 }
 
-function randomIndex(max){
+function randomIndex(max) {
     return Math.floor(Math.random() * max);
 }
 
-function getpWithSource(message, linkSource='', nameSource=''){
+function getpWithSource(message, linkSource = '', nameSource = '') {
 
-    const messageW  = getpWarningMessage();
+    const messageW = getpWarningMessage();
     part1 = document.createTextNode(message);
-    if('' !== linkSource){
+    if ('' !== linkSource) {
         lien = document.createElement('a');
         lien.href = linkSource;
         lien.target = '_blank';
-        lien.textContent = ' ( Source : ' + nameSource + ' )';
+        lien.textContent = ' (Source : ' + nameSource + ')';
     }
 
     messageW.appendChild(part1);
-    if('' !== linkSource){
+    if ('' !== linkSource) {
         messageW.appendChild(lien);
     }
 
     return messageW;
 }
 
-function simplePWarning(m){
+function simplePWarning(m) {
     const message = getpWarningMessage();
     message.textContent = m;
     return message;
 }
 
 
-
-function warningMessageAmazon(title, message, type='warning', customTxt='')// type warning, info, success
+function warningMessageAmazon(title, message, type = 'warning', customTxt = '')// type warning, info, success
 {
     const warningMessage = document.createElement("div");
 
@@ -71,14 +70,14 @@ function warningMessageAmazon(title, message, type='warning', customTxt='')// ty
 
     var customTextDiv = document.createElement('p');
 
-    if('' !== customTxt){
+    if ('' !== customTxt) {
         customTextDiv.className = 'a-section a-spacing-none sc-java-remote-feature';
         customTextDiv.textContent = customTxt;
     }
 
     contentDiv.appendChild(message);
 
-    if('' !== customTxt) {
+    if ('' !== customTxt) {
         contentDiv.appendChild(customTextDiv);
     }
 
@@ -93,7 +92,7 @@ function warningMessageAmazon(title, message, type='warning', customTxt='')// ty
     return warningMessage;
 }
 
-function checkBuy(message){
+function checkBuy(message) {
     var divElement = document.createElement('div');
     divElement.className = 'a-box-inner a-padding-base';
 
@@ -107,7 +106,7 @@ function checkBuy(message){
     return divElement
 }
 
-function onClickBuy(event){
+function onClickBuy(event) {
     const fakeBtn1 = document.getElementById("fakeBuy");
     const fakeBtn2 = document.getElementById("fakeBuyNow");
 
@@ -138,16 +137,16 @@ function onClickBuy(event){
     divControl.appendChild(checkBuy('Est-ce que j\'en ai vraiment besoin ?'));
     divControl.appendChild(checkBuy('Est-ce que j\'en ai vraiment besoin maintenant ?'));
 
-    if(fakeBtn1){
+    if (fakeBtn1) {
         fakeBtn1.remove();
     }
 
-    if(fakeBtn2){
+    if (fakeBtn2) {
         fakeBtn2.remove();
     }
 
     const addToCartButton = document.getElementById("atc-declarative")
-    if(addToCartButton){
+    if (addToCartButton) {
         addToCartButton.parentNode.insertBefore(divControl, addToCartButton.previousSibling);
 
         addToCartButton.style.visibility = '';
@@ -155,24 +154,22 @@ function onClickBuy(event){
     }
 
     const buyNowButton = document.getElementById("buyNow")
-    if(buyNowButton){
+    if (buyNowButton) {
         buyNowButton.style.visibility = '';
         buyNowButton.style.position = '';
     }
 }
 
 const messagesBan = [
-    "Notre mission, vous faire acheter toujours plus ! + 16 % de croissance annuelle grâce à vous ❤️",
-    "Un peu d'argent sur votre compte ? On vous aide à le dépenser rapidement !",
-    "Besoin d'un objet inutile ? On a la solution pour vous !",
-    "On teste de nouveaux robots humanoïdes pour préparer vos commandes => - d'employés, + 🤑 ",
-    "Des livraisons quasiment gratuites pour vous. Les gaz à effet de serre sont offerts",
-    "Pour chaque emploi créé chez nous, vos commerces de proximité perdent 2,2 emplois"
+    "En moyenne, vos colis contiennent 50% de vide 😲 ! Résultat : un suremballage complètement inutile. (source : ADEME)",
+    "30% des articles réexpédiés par les clients finissent à la poubelle. Un gâchis monumental ! (source : RTBF)",
+    "1/3 des retraits de colis sont spécialement réalisés en voiture 🌪️ (source : ADEME)",
+    "2,5 tonnes : poids total des objets accumulés chez nous. Et si on mettait notre logement au régime ? (source : ADEME)",
 ]
 
 function showBanniereMobile() {
     const bannerAmazon = document.getElementById("nav-logobar");
-    if(bannerAmazon){
+    if (bannerAmazon) {
         const bannerKickStarter = document.createElement("div");
         let positionMessage = randomIndex(messagesBan.length);
         bannerKickStarter.textContent = messagesBan[positionMessage];
@@ -187,10 +184,10 @@ function showBanniereMobile() {
     }
 }
 
-function showBanniere(){
+function showBanniere() {
     // Make a banner
     const bannerAmazon = document.getElementById("nav-belt")
-    if(bannerAmazon){
+    if (bannerAmazon) {
         const bannerKickStarter = document.createElement("div");
 
 
@@ -248,7 +245,7 @@ function showBanniere(){
     }
 }
 
-function displayMessagePrix(){
+function displayMessagePrix() {
     // console.log("jdkfdjfjdkfjdkfjdkf")
 // document.body.style.border = "5px solid red";
 //
@@ -271,13 +268,13 @@ function displayMessagePrix(){
 // }
 }
 
-function displayDescription(){
+function displayDescription() {
     //description de produit
     let descriptionProduit = document.getElementById("productDescription_feature_div")
-    if(!descriptionProduit)
+    if (!descriptionProduit)
         descriptionProduit = document.getElementById('device-dp-recommendations_feature_div')
 
-    if(descriptionProduit){
+    if (descriptionProduit) {
         let divMessage = document.createElement("div");
         let imgDechet = document.createElement("img");
         let pText = document.createElement("h2");
@@ -296,9 +293,9 @@ function displayDescription(){
     }
 }
 
-function afterPrix(afterPricePanier){
+function afterPrix(afterPricePanier) {
 
-    const MEnov  = getpWarningMessage();
+    const MEnov = getpWarningMessage();
     let part1 = document.createTextNode('L\'association ');
     let lien = document.createElement('a');
     lien.href = 'https://www.helloasso.com/associations/les-enovateurs/formulaires/1';
@@ -311,7 +308,7 @@ function afterPrix(afterPricePanier){
     MEnov.appendChild(part2);
 
 
-    const MHop  = getpWarningMessage();
+    const MHop = getpWarningMessage();
     part1 = document.createTextNode('L\'association ');
     lien = document.createElement('a');
     lien.href = 'https://www.halteobsolescence.org/faire-un-don/';
@@ -323,7 +320,7 @@ function afterPrix(afterPricePanier){
     MHop.appendChild(lien);
     MHop.appendChild(part2);
 
-    const MEmmaus  = getpWarningMessage();
+    const MEmmaus = getpWarningMessage();
     part1 = document.createTextNode('L\'association ');
     lien = document.createElement('a');
     lien.href = 'https://www.helloasso.com/associations/emmaus-connect/formulaires/1/';
@@ -335,7 +332,7 @@ function afterPrix(afterPricePanier){
     MEmmaus.appendChild(lien);
     MEmmaus.appendChild(part2);
 
-    const MLatitude  = getpWarningMessage();
+    const MLatitude = getpWarningMessage();
     part1 = document.createTextNode('L\'association ');
     lien = document.createElement('a');
     lien.href = 'https://www.helloasso.com/associations/latitudes-exploring-tech-for-good/formulaires/3';
@@ -347,63 +344,94 @@ function afterPrix(afterPricePanier){
     MLatitude.appendChild(lien);
     MLatitude.appendChild(part2);
 
+    const TGG = getpWarningMessage();
+    part1 = document.createTextNode('L\'association ');
+    lien = document.createElement('a');
+    lien.href = 'https://www.helloasso.com/associations/the-greener-good/formulaires/1';
+    lien.target = '_blank';
+    lien.textContent = 'The Greener Good';
+    part2 = document.createTextNode(' sensibilise le grand public aux impacts de nos modes de vie et oeuvre pour les rendre plus soutenables');
+
+    TGG.appendChild(part1);
+    TGG.appendChild(lien);
+    TGG.appendChild(part2);
+
     const messagesPossible = [
         {
-            'title' : 'Faites un don à une association qui se mobilise pour un numérique responsable, éthique et accessible',
+            'title': 'Faites un don à une association qui se mobilise pour un numérique responsable, éthique et accessible',
             'message': MEnov
         },
         {
-            'title' : 'Faites un don à une association qui lutte contre l\'obsolescence programmée',
+            'title': 'Faites un don à une association qui lutte contre l\'obsolescence programmée',
             'message': MHop
         },
         {
-            'title' : 'Faites un don à une association qui fait reculer l\'exclusion numérique et sociale',
+            'title': 'Faites un don à une association qui fait reculer l\'exclusion numérique et sociale',
             'message': MEmmaus
         },
         {
-            'title' : 'Faites un don à une association qui agit pour construire une tech plus engagée et responsable',
+            'title': 'Faites un don à une association qui agit pour construire une tech plus engagée et responsable',
             'message': MLatitude
+        },
+        {
+            'title': 'Faites un don à une association qui agit pour promouvoir un mode de vie plus durable',
+            'message': TGG
         }
     ];
 
     const messageCart = [
         {
-            'title':'Nous misons sur des entrepôts entièrement automatisés d’ici 10 ans.',
-            'message': getpWithSource('Moins de salaires = Plus d\'argent pour nous !', 'https://www.clubic.com/pro/entreprises/amazon/actualite-855999-amazon-entrepots-entierement-automatises-10-ans.html','Clubic')
+            'title': 'Saviez-vous que vos colis contiennent en moyenne 50% de vide 😲 ?',
+            'message': getpWithSource('A la livraison, c\'est beaucoup de carburant gaspillé pour ne rien transporter...', 'https://infos.ademe.fr/article-magazine/limpact-environnemental-du-commerce-en-ligne', 'ADEME')
         },
         {
-            'title':'A Montélimar, nos salariés en CDI ne restent pas plus de 2 ans 1/2 en moyenne à leur poste.',
-            'message': getpWithSource('Des conditions de travail pénibles, des salaires bas.','https://rmc.bfmtv.com/actualites/economie/conso/dupin-quotidien-la-face-cachee-d-amazon_AV-201908210239.html','RMC')
+            'title': '30% des articles réexpédiés par les clients finissent à la poubelle, selon une étude menée en Allemagne.',
+            'message': getpWithSource('Un gâchis monumental !', 'https://www.rtbf.be/article/black-friday-achats-impulsifs-retours-invendus-et-gros-gachis-10078688', 'RTBF')
         },
         {
-            'title': 'Notre management est brutal, robotisé. Nos règles de sécurité sont enfreintes pour tenir les objectifs. Nous contrôlons même les pauses toilettes…',
-            'message': getpWithSource('C’est ce que révèlent les 256 salariés de l’entrepôt de Montélimar dans un rapport. 74% des répondants déclarent ressentir des douleurs physiques liées à leur travail.','https://www.capital.fr/entreprises-marches/amazon-un-rapport-alarmant-sur-les-conditions-de-travail-a-montelimar-1285393','Capital')
+            'title': 'Si j’achète neuf, j\'achète durable.',
+            'message': getpWithSource('Je privilégie les appareils porteurs d\'un bon indice de réparabilité !', 'https://epargnonsnosressources.gouv.fr/indice-de-reparabilite/', 'ADEME')
         },
         {
-            'title': 'Des milliers de livreurs exploités pour vous servir',
-            'message': getpWithSource('Ils livrent entre 80 et 180 colis selon les jours. « Parfois, ça peut dépasser les 200, 220 », constate un chef de dépôt.','https://www.liberation.fr/france/2018/10/05/dans-la-peau-d-un-forcat-d-amazon_1683525/','Libération')
+            'title': 'Avant d\'acheter, répondez au quizz de l\'Agence pour la transition...',
+            'message': getpWithSource('...pour vous assurer que vous faites le bon choix.', 'https://epargnonsnosressources.gouv.fr/evaluer-besoin-avant-achat/', 'ADEME')
         },
         {
-            'title': '57% de notre chiffre d’affaires en France est dissimulé dans des paradis fiscaux',
-            'message': getpWithSource('On pratique une évasion fiscale massive en déplaçant une grande partie de nos bénéfices vers l’étranger, notamment au Luxembourg.','https://france.attac.org/nos-publications/notes-et-rapports/article/nouveau-rapport-impunite-fiscale-sociale-et-environnementale-immersion-dans-le','France Attac')
+            'title': 'Avant de remplacer mon appareil en panne',
+            'message': getpWithSource('Je lance un petit diagnostic sur le site de l\'Agence de la transition', 'https://epargnonsnosressources.gouv.fr/diagnostic-pannes-appareils/', 'ADEME')
+        },
+        {
+            'title': '1 MILLIARD DE COLIS/AN : c’est le volume d’activité estimé pour le secteur du commerce en ligne en France',
+            'message': getpWithSource('1 million de tonnes équivalent CO2/an environ', 'https://infos.ademe.fr/article-magazine/limpact-environnemental-du-commerce-en-ligne/', 'ADEME')
+        },
+        {
+            'title': '1/3 des retraits de colis sont spécialement réalisés en voiture !',
+            'message': getpWithSource('Et si vous regroupiez vos déplacements, ou utilisiez un moyen de transport plus écologique ?', 'https://www.ecologie.gouv.fr/campagne-nos-objets-ont-plein-d-avenirs', 'ADEME')
+        },
+        {
+            'title': '2,5 tonnes : c\'est le poids total de tous les objets accumulés chez nous (en moyenne). ',
+            'message': getpWithSource('Et si on mettait notre logement au régime ?', 'https://www.ecologie.gouv.fr/campagne-nos-objets-ont-plein-d-avenirs', 'ADEME')
+        },
+        {
+            'title': 'La fabrication d’un ordinateur de 2 Kg mobilise 800 Kg de matières premières et génère 124 Kg de CO2.',
+            'message': getpWithSource('Prenons soin de nos appareils, et faisons-les durer !', 'https://cnm.fr/wp-content/uploads/2021/08/ademe_guide-pratique-face-cachee-numerique.pdf', 'ADEME')
         }
     ]
 
     const choosenOneHead = randomIndex(messageCart.length);
-    afterPricePanier.parentNode.insertBefore(warningMessageAmazon(messageCart[choosenOneHead].title,messageCart[choosenOneHead].message), afterPricePanier.nextSibling);
+    afterPricePanier.parentNode.insertBefore(warningMessageAmazon(messageCart[choosenOneHead].title, messageCart[choosenOneHead].message), afterPricePanier.nextSibling);
 
     const choosenOne = randomIndex(messagesPossible.length);
     const amountPrice = document.getElementById("gutterCartViewForm")
-    if(amountPrice){
-        amountPrice.parentNode.insertBefore(warningMessageAmazon(messagesPossible[choosenOne].title,messagesPossible[choosenOne].message, 'info',
+    if (amountPrice) {
+        amountPrice.parentNode.insertBefore(warningMessageAmazon(messagesPossible[choosenOne].title, messagesPossible[choosenOne].message, 'info',
             'Avec ce geste, vous ne compenserez pas votre achat, ' +
             'mais c\'est une première action.'), amountPrice.nextSibling);
-    }
-    else{
+    } else {
         const BuyBox = document.getElementById("sc-mini-buy-box")
-        if(BuyBox){
-            console.log(messagesPossible[choosenOne].title,messagesPossible[choosenOne].message)
-            BuyBox.parentNode.insertBefore(warningMessageAmazon(messagesPossible[choosenOne].title,messagesPossible[choosenOne].message, 'info',
+        if (BuyBox) {
+            console.log(messagesPossible[choosenOne].title, messagesPossible[choosenOne].message)
+            BuyBox.parentNode.insertBefore(warningMessageAmazon(messagesPossible[choosenOne].title, messagesPossible[choosenOne].message, 'info',
                 'Avec ce geste, vous ne compenserez pas votre achat, ' +
                 'mais c\'est une première action.'), BuyBox.nextSibling);
         }
@@ -412,7 +440,7 @@ function afterPrix(afterPricePanier){
 
 }
 
-function inProduct(){
+function inProduct() {
     //pas de panier
     const titleProduct = document.getElementById("productTitle")
     const identiPhone14 = 'Apple iPhone 14 (128 Go)';
@@ -423,32 +451,31 @@ function inProduct(){
     const warningiPhone13 = 'Retrouvez l\'iPhone 13 128Go reconditionné à seulement 547€ sur Certideal, Recommerce, Rebuy, BackMarket, ...';
 
 
-    if(titleProduct){//sur un article
-        if(titleProduct.textContent.includes(identiPhone14)) //Reconditionné Apple iPhone 14 ?
+    if (titleProduct) {//sur un article
+        if (titleProduct.textContent.includes(identiPhone14)) //Reconditionné Apple iPhone 14 ?
         {
             const preloadLandingPage = document.getElementById("rw-preload-landing-image_div")
-            if(preloadLandingPage) {
-                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon(messageiPhone14,simplePWarning(warningiPhone14)), preloadLandingPage.nextSibling);
+            if (preloadLandingPage) {
+                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon(messageiPhone14, simplePWarning(warningiPhone14)), preloadLandingPage.nextSibling);
             }
         }
-        if(titleProduct.textContent.includes(identiPhone13)) //Reconditionné Apple iPhone 14 ?
+        if (titleProduct.textContent.includes(identiPhone13)) //Reconditionné Apple iPhone 14 ?
         {
             const preloadLandingPage = document.getElementById("rw-preload-landing-image_div")
-            if(preloadLandingPage) {
-                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon(messageiPhone13,simplePWarning(warningiPhone13)), preloadLandingPage.nextSibling);
+            if (preloadLandingPage) {
+                preloadLandingPage.parentNode.insertBefore(warningMessageAmazon(messageiPhone13, simplePWarning(warningiPhone13)), preloadLandingPage.nextSibling);
             }
         }
-    }
-    else{//maybe mobile
+    } else {//maybe mobile
         const titleProductMobile = document.getElementById("title")
-        if(titleProductMobile) {//sur un article
-            if(titleProductMobile.textContent.includes(identiPhone14)) //Reconditionné Apple iPhone 14 ?
+        if (titleProductMobile) {//sur un article
+            if (titleProductMobile.textContent.includes(identiPhone14)) //Reconditionné Apple iPhone 14 ?
             {
-                titleProductMobile.parentNode.insertBefore(warningMessageAmazon(messageiPhone14,simplePWarning(warningiPhone14)), titleProductMobile.nextSibling);
+                titleProductMobile.parentNode.insertBefore(warningMessageAmazon(messageiPhone14, simplePWarning(warningiPhone14)), titleProductMobile.nextSibling);
             }
-            if(titleProductMobile.textContent.includes(identiPhone13)) //Reconditionné Apple iPhone 14 ?
+            if (titleProductMobile.textContent.includes(identiPhone13)) //Reconditionné Apple iPhone 14 ?
             {
-                titleProductMobile.parentNode.insertBefore(warningMessageAmazon(messageiPhone13,simplePWarning(warningiPhone13)), titleProductMobile.nextSibling);
+                titleProductMobile.parentNode.insertBefore(warningMessageAmazon(messageiPhone13, simplePWarning(warningiPhone13)), titleProductMobile.nextSibling);
             }
         }
     }
@@ -457,7 +484,7 @@ function inProduct(){
     //Prendre conscience de l'achat
     //Hide buttons and replace by fake button to take conscience
     const addToCartButton = document.getElementById("atc-declarative")
-    if(addToCartButton){
+    if (addToCartButton) {
         //copy of button
         addToCartButton.style.visibility = 'hidden';
         addToCartButton.style.position = 'absolute';
@@ -510,7 +537,7 @@ function inProduct(){
 
     const buyNowButton = document.getElementById("buyNow")
 
-    if(buyNowButton){
+    if (buyNowButton) {
         //copy of button
         buyNowButton.style.visibility = 'hidden'
         buyNowButton.style.position = 'absolute';
